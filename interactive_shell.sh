@@ -39,6 +39,7 @@ do
 	if [[ $command == "clear" ]]; then
 		clear
 		continue
+	fi
 
 	invalid_command_message
 	continue
