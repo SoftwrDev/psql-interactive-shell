@@ -29,17 +29,19 @@ do
 	if [[ $command == "help" || $command == "h" ]]; then
 		help
 		continue
-	elif [[ $command == "exit" || $command == "quit" ]]; then
+	fi
+
+	if [[ $command == "exit" || $command == "quit" ]]; then
 		exit_message
 		break
+	fi
 
-	elif [[ $command == "clear" ]]; then
+	if [[ $command == "clear" ]]; then
 		clear
 		continue
-	else
-		invalid_command_message
-		continue
-	fi
+
+	invalid_command_message
+	continue
 
 	psql
 done
