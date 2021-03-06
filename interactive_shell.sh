@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source ./messages.sh
-source ./functions.sh
+source ./shell_functions.sh
 source ./commands.sh
 
 checkEmptyCredentials
