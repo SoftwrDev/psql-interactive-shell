@@ -38,4 +38,4 @@ dropTable() {
 }
 
 commands["drop_table"]="deletes a table if it exists"
-commandFactory["drop table"]="dropTable && echo"
+commandFactory["drop table"]="dropTable"
