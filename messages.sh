@@ -1,8 +1,13 @@
 #!/bin/bash
 
+source ./commands.sh
+
 helpMessage() {
-	echo "use \"list tables\" to see all tables"
-	printf "use \"list databases\" to see all the databases\n\n"
+	for key in ${!commands[@]}; do
+		echo "$key" | sed -r "s/(.*)_(.*)/\1 \2: /"
+		printf "\t%s\n" "${commands[$key]}"
+	done
+	printf "\n"
 }
 
 exitMessage() {

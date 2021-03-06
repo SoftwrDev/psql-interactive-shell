@@ -2,6 +2,7 @@
 
 source ./messages.sh
 source ./functions.sh
+source ./commands.sh
 
 checkEmptyCredentials
 checkEmptyDatabaseProvided
