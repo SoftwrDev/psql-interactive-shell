@@ -30,3 +30,24 @@ listTables() {
 listDatabases() {
 	psql -c "\l"
 }
+
+dropTable() {
+	clear
+	echo -n "What is the name of the table you want to delete? "
+	read tableName
+
+	printf "Are you sure you wanna delete %s table? [y/N] " "$tableName"
+	read shouldDelete
+
+	if [[ $shouldDelete == "y" || $shouldDelete == "Y" ]]; then
+		psql -c "DROP TABLE IF EXISTS $tableName;"
+
+		if [[ -z $? ]]; then
+			echo "Table $tableName deleted with success!"
+		else
+			echo "Error while deleting $tableName..."
+		fi
+	fi
+
+	printf "\n"
+}

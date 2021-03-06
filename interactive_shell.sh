@@ -41,6 +41,11 @@ while true; do
 		continue
 	fi
 
+	if [[ $cmd == "drop table" ]]; then
+		dropTable
+		continue
+	fi
+
 	if [[ $cmd == "exit" || $cmd == "quit" ]]; then
 		exitMessage
 		break
