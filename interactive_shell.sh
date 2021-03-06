@@ -34,11 +34,11 @@ do
         fi
 
 	if [[ $cmd == "exit" || $cmd == "quit" ]]; then
-		exit_message
+		exitMessage
 		break
 	fi
 
-	invalid_command_message
+	invalidCommandMessage
 	continue
 
 	psql

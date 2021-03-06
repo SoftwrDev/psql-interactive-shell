@@ -5,10 +5,10 @@ help() {
 	printf "use \"list databases\" to see all the databases\n\n"
 }
 
-exit_message() {
+exitMessage() {
 	printf "Bye bye!! See you again later!\n\n"
 }
 
-invalid_command_message() {
+invalidCommandMessage() {
 	printf "Invalid command... Type \"help\" or \"h\" if you want some rescue\n\n"
 }
