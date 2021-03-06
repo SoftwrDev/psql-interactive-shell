@@ -38,5 +38,4 @@ do
 	fi
 
 	invalidCommandMessage
-	continue
 done
