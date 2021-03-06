@@ -94,3 +94,14 @@ createTable() {
 commands["create_table"]="creates a table if valid and does not exist yet"
 commandFactory["create table"]="createTable && echo"
 
+describeTable() {
+	echo -n "Which table you wanna know more about? "
+	read tableName
+
+	psql -c "\d $tableName"
+}
+
+commands["describe_table"]="shows the internal structure of a given table"
+commandFactory["describe table"]="describeTable && echo"
+
+
