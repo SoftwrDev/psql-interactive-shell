@@ -143,8 +143,8 @@ selectFromTable() {
 	psql -c "SELECT * FROM $tableName;"
 }
 
-commands["select_table"]="get values from a table and shows on the screen"
-commandFactory["select table"]="selectFromTable && echo"
+commands["get"]="get values from a table and shows on the screen"
+commandFactory["get"]="selectFromTable && echo"
 
 addInTable() {
 	echo -n "In which table you wanna add? "
