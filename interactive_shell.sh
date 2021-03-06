@@ -39,6 +39,4 @@ do
 
 	invalidCommandMessage
 	continue
-
-	psql
 done
