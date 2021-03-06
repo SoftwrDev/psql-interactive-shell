@@ -32,7 +32,6 @@ listDatabases() {
 }
 
 dropTable() {
-	clear
 	echo -n "What is the name of the table you want to delete? "
 	read tableName
 
