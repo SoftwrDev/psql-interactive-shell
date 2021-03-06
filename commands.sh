@@ -105,3 +105,43 @@ commands["describe_table"]="shows the internal structure of a given table"
 commandFactory["describe table"]="describeTable && echo"
 
 
+selectFromTable() {
+	echo -n "Which table you wanna select? "
+	read tableName
+
+	echo -n "Should use where constraint? [y/N] "
+	read useWhere
+
+	if [[ $useWhere == "y" || $useWhere == "Y" ]]; then
+	        echo -n "Tell me the where constraints: "
+        	read whereConstraint
+	fi
+
+	echo -n "Wanna select certain columns only? [y/N] "
+        read agree
+
+
+	if [[ $agree == "y" || $agree == "Y" ]]; then
+		echo -n "Tell me the columns separed by comma (,): "
+		read columnNames
+
+		if [[ $useWhere == "y" || $useWhere == "Y" ]]; then
+	                psql -c "SELECT $columnNames FROM $tableName WHERE $whereConstraint;"
+			return
+		fi
+
+		psql -c "SELECT $columnNames FROM $tableName;"
+		return
+	fi
+
+
+	if [[ $useWhere == "y" || $useWhere == "Y" ]]; then
+		psql -c "SELECT * FROM $tableName WHERE $whereConstraint;"
+		return
+	fi
+
+	psql -c "SELECT * FROM $tableName;"
+}
+
+commands["select_table"]="get values from a table and shows on the screen"
+commandFactory["select table"]="selectFromTable && echo"
