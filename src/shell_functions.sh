@@ -34,7 +34,7 @@ prepareEnv() {
                 export PGHOST=$DB_HOST
         fi
 
-        if [[ ${#DB_PORT} -eq 0 && $PGPORT -eq 0 ]]; then
+        if [[ ${#DB_PORT} -eq 0 && ${#PGPORT} -eq 0 ]]; then
                 export PGPORT=5432
         else
                 export PGPORT=$DB_PORT
