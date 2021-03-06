@@ -4,7 +4,7 @@ source ./commands.sh
 
 helpMessage() {
 	for key in ${!commands[@]}; do
-		echo "$key" | sed -r "s/(.*)_(.*)/\1 \2: /"
+		echo "$key" | sed -r "s/(.*)_(.*)/\1 \2/; s/(.*)/\1: /"
 		printf "\t%s\n" "${commands[$key]}"
 	done
 	printf "\n"
