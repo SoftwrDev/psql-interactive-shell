@@ -14,6 +14,12 @@ checkEmptyDatabaseProvided() {
 	fi
 }
 
+checkCodeEditor() {
+	if [[ ${#CODE_EDITOR} -eq 0 ]]; then
+		export CODE_EDITOR="nano"
+	fi
+}
+
 testPsqlConnectivity() {
 	psql -c "\l" > /dev/null 2>&1
 

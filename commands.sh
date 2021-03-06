@@ -216,3 +216,36 @@ updateValue() {
 commands["update"]="Update values from a table given a where contraint"
 commandFactory["update"]="updateValue && echo"
 
+rawQuery() {
+	TMP_FILENAME=tmp$((1 + $RANDOM % 10000)).sql
+	eval $CODE_EDITOR $TMP_FILENAME
+
+	sleep 5
+	echo -n "Do you wanna execute the query written? [y/N]"
+	read areYouSure
+
+	if [[ $areYouSure == "y" || $areYouSury == "Y" ]]; then
+		psql -f $TMP_FILENAME
+
+		echo -n "Do you wanna save your sql script? [y/N]"
+		read wantSave
+
+		if [[ $wantSave == "y" || $wantSave == "Y" ]]; then 
+			echo -n "What name you wanna call your script? "
+			read scriptName
+
+			mkdir -p ./scripts > /dev/null 2>&1
+
+			mv $TMP_FILENAME ./scripts/$scriptName
+			return
+		fi
+
+		rm $TMP_FILENAME
+		return
+	fi
+
+	rm $TMP_FILENAME
+}
+
+commands["raw_query"]="Runs a raw query writen by the user"
+commandFactory["raw query"]="rawQuery && echo"
