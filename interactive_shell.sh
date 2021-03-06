@@ -28,14 +28,15 @@ do
 		continue
 	fi
 
+	if [[ $command == "clear" ]]; then
+                clear
+                continue
+        fi
+
+
 	if [[ $command == "exit" || $command == "quit" ]]; then
 		exit_message
 		break
-	fi
-
-	if [[ $command == "clear" ]]; then
-		clear
-		continue
 	fi
 
 	invalid_command_message
