@@ -24,5 +24,9 @@ testPsqlConnectivity() {
 }
 
 listTables() {
+	psql -c "\dt"
+}
+
+listDatabases() {
 	psql -c "\l"
 }

@@ -36,6 +36,11 @@ while true; do
 		continue
 	fi
 
+	if [[ $cmd == "list databases" ]]; then
+		listDatabases
+		continue
+	fi
+
 	if [[ $cmd == "exit" || $cmd == "quit" ]]; then
 		exitMessage
 		break
