@@ -39,3 +39,47 @@ dropTable() {
 
 commands["drop_table"]="deletes a table if it exists"
 commandFactory["drop table"]="dropTable"
+
+createTable() {
+	echo -n "What is the name of the table? "
+	read tableName
+
+	declare -A arguments
+
+	while true; do
+
+		echo -n "What is the name of the next column? "
+		read columnName
+
+		echo -n "What is the definition of the column? "
+		read columnDefinition
+		arguments+=(["$columnName"]="$columnDefinition")
+
+		echo -n "Are you done yet? [y/N] "
+		read isDone
+
+		if [[ $isDone == "y" || $isDone == "Y" ]]; then
+			break
+		fi
+	done
+
+	out=""
+
+	for key in "${!arguments[@]}"; do
+		out+="$key ${arguments[$key]},"
+	done
+
+	local cmd="CREATE TABLE $tableName (${out::-1});"
+
+	printf "$cmd\n"
+	echo -n "Would you like to run this command? "
+	read doExec
+
+	if [[ $doExec == "y" || $doExec == "Y" ]]; then
+		psql -c "$cmd"
+	fi
+}
+
+commands["create_table"]="creates a table if valid and does not exist yet"
+commandFactory["create table"]="createTable && echo"
+
