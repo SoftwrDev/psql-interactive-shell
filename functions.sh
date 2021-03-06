@@ -39,14 +39,14 @@ dropTable() {
 	read shouldDelete
 
 	if [[ $shouldDelete == "y" || $shouldDelete == "Y" ]]; then
-		psql -c "DROP TABLE IF EXISTS $tableName;"
+		psql -c "DROP TABLE $tableName;"
 
-		if [[ -z $? ]]; then
-			echo "Table $tableName deleted with success!"
-		else
-			echo "Error while deleting $tableName..."
+		if [[ $? -eq 0 ]]; then
+			printf "Table %s deleted with success!\n\n" "$tableName"
+			return
 		fi
+
+		printf "Error while deleting %s...\n\n" "$tableName"
 	fi
 
-	printf "\n"
 }
