@@ -37,5 +37,11 @@ while true; do
 		break
 	fi
 
-	[ -v "commandFactory[$cmd]" ] && eval "${commandFactory[$cmd]}" || invalidCommandMessage
+	if [[ -v "commandFactory[$cmd]" ]]; then
+		eval "${commandFactory[$cmd]}"
+		echo ""
+		continue
+	fi
+
+	invalidCommandMessage
 done
