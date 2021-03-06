@@ -39,7 +39,6 @@ while true; do
 
 	if [[ -v "commandFactory[$cmd]" ]]; then
 		eval "${commandFactory[$cmd]}"
-		echo ""
 		continue
 	fi
 
