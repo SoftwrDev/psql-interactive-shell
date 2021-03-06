@@ -192,3 +192,27 @@ commands["delete"]="Delete something from a table given some where constraints"
 commandFactory["delete"]="deleteFromTable && echo"
 
 
+updateValue() {
+	echo -n "Tell me from what table you wanna update? "
+	read tableName
+
+	echo -n "Tell me what columns and value separated by (,) you wanna update: "
+	read updatedValues
+
+	echo -n "Now the where clause: "
+	read whereClause
+
+	local cmd="UPDATE $tableName SET $updatedValues WHERE $whereClause;"
+	echo $cmd
+
+	echo -n "Are you sure you wanna update with this command? [y/N]"
+	read areYouSure
+
+	if [[ $areYouSure == "y" || $areYouSure == "Y" ]]; then
+		psql -c "$cmd"
+	fi
+}
+
+commands["update"]="Update values from a table given a where contraint"
+commandFactory["update"]="updateValue && echo"
+
