@@ -19,7 +19,6 @@ clear
 while true
 do
 	echo -n "Hello there, what do you wanna do? "
-
 	read cmd
 
 	if [[ $cmd == "help" || $cmd == "h" ]]; then
