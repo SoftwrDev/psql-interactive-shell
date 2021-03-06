@@ -31,9 +31,9 @@ prepareEnv() {
 		export PGPORT=$DB_PORT
 	fi
 
-        if [[ ${#CODE_EDITOR} -eq 0 ]]; then
-                export CODE_EDITOR="nano"
-        fi
+	if [[ ${#CODE_EDITOR} -eq 0 ]]; then
+			export CODE_EDITOR="nano"
+	fi
 
 }
 
