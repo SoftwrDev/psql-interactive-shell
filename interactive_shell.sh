@@ -33,7 +33,6 @@ do
                 continue
         fi
 
-
 	if [[ $command == "exit" || $command == "quit" ]]; then
 		exit_message
 		break
