@@ -145,3 +145,27 @@ selectFromTable() {
 
 commands["select_table"]="get values from a table and shows on the screen"
 commandFactory["select table"]="selectFromTable && echo"
+
+addInTable() {
+	echo -n "In which table you wanna add? "
+	read tableName
+
+	echo -n "What columns you wanna add separated by comma (,): "
+	read columnNames
+
+	echo -n "Type the values you wanna add in the same order you said in the columns separated by comma (,): "
+	read valuesToAdd
+
+	local cmd="INSERT INTO $tableName($columnNames) VALUES ($valuesToAdd);"
+
+	echo $cmd
+	echo -n "Are you sure you wanna add this? [y/N]"
+	read areYouSure
+
+	if [[ $areYouSure == "y" || $areYouSure == "Y" ]]; then
+		psql -c "$cmd"
+	fi
+}
+
+commands["add"]="Insert in a table a values for given columns"
+commandFactory["add"]="addInTable && echo"
