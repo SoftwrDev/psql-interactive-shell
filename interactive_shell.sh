@@ -22,7 +22,7 @@ while true; do
 	read cmd
 
 	if [[ $cmd == "help" || $cmd == "h" ]]; then
-		help
+		helpMessage
 		continue
 	fi
 

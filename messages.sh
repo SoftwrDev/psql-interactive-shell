@@ -1,6 +1,6 @@
 #!/bin/bash
 
-help() {
+helpMessage() {
 	echo "use \"list tables\" to see all tables"
 	printf "use \"list databases\" to see all the databases\n\n"
 }
