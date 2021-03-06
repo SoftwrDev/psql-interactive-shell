@@ -16,8 +16,7 @@ testPsqlConnectivity
 
 clear
 
-while true
-do
+while true; do
 	echo -n "Hello there, what do you wanna do? "
 	read cmd
 
