@@ -7,7 +7,6 @@ source ./commands.sh
 checkEmptyCredentials
 checkEmptyDatabaseProvided
 prepareEnv
-
 testPsqlConnectivity
 
 clear
