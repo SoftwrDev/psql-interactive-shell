@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./commands.sh
+source ./src/commands.sh
 
 helpMessage() {
 	for key in ${!commands[@]}; do
