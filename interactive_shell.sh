@@ -1,14 +1,10 @@
 #!/bin/bash
 
-if [[ ${#LOGIN} -eq 0 || ${#PASSWORD} -eq 0 ]]; then
-    echo "Invalid credentials"
-    exit 1
-fi
+source ./messages.sh
+source ./functions.sh
 
-if [[ ${DBNAME} == "" ]]; then
-    echo "Database name not provided"
-    exit 1
-fi
+checkEmptyCredentials
+checkEmptyDatabaseProvided
 
 export PGHOST=127.0.0.1
 export PGPORT=5432
@@ -16,9 +12,10 @@ export PGUSER=$LOGIN
 export PGDATABASE=$DBNAME
 export PGPASSWORD=$PASSWORD
 
-clear
 
-source ./messages.sh
+testPsqlConnectivity
+
+clear
 
 while true
 do
