@@ -1,8 +1,8 @@
 #!/bin/bash
 
-source ./messages.sh
-source ./shell_functions.sh
-source ./commands.sh
+source ./src/messages.sh
+source ./src/shell_functions.sh
+source ./src/commands.sh
 
 checkEmptyCredentials
 checkEmptyDatabaseProvided

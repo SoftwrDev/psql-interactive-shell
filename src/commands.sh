@@ -37,13 +37,6 @@ dropTable() {
 
         if [[ $shouldDelete == "y" || $shouldDelete == "Y" ]]; then
                 psql -c "DROP TABLE $tableName;"
-
-                if [[ -z $? ]]; then
-                        printf "Table %s deleted with success!\n\n" "$tableName"
-                        return
-                fi
-
-                printf "Error while deleting %s...\n\n" "$tableName"
         fi
 
 }
