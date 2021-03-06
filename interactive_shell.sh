@@ -22,21 +22,6 @@ while true; do
 	echo -n "Hello there, what do you wanna do? "
 	read cmd
 
-	if [[ $cmd == "help" || $cmd == "h" ]]; then
-		helpMessage
-		continue
-	fi
-
-	if [[ $cmd == "clear" ]]; then
-                clear
-                continue
-        fi
-
-	if [[ $cmd == "exit" || $cmd == "quit" ]]; then
-		exitMessage
-		break
-	fi
-
 	if [[ -v "commandFactory[$cmd]" ]]; then
 		eval "${commandFactory[$cmd]}"
 		continue

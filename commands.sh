@@ -3,6 +3,17 @@
 declare -A commands
 declare -A commandFactory
 
+commands["help(h)"]="show availables commands"
+commandFactory["help"]="helpMessage"
+commandFactory["h"]="helpMessage"
+
+commands["clear"]="clears terminal output"
+commandFactory["clear"]="clear"
+
+commands["exit(quit)"]="exits shell"
+commandFactory["exit"]="exitMessage && break"
+commandFactory["quit"]="exitMessage && break"
+
 listTables() {
         psql -c "\dt"
 }
