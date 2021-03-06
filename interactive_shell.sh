@@ -12,7 +12,6 @@ export PGUSER=$LOGIN
 export PGDATABASE=$DBNAME
 export PGPASSWORD=$PASSWORD
 
-
 testPsqlConnectivity
 
 clear
