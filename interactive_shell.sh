@@ -31,6 +31,11 @@ while true; do
                 continue
         fi
 
+	if [[ $cmd == "list tables" ]]; then
+		listTables
+		continue
+	fi
+
 	if [[ $cmd == "exit" || $cmd == "quit" ]]; then
 		exitMessage
 		break

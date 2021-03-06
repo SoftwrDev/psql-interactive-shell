@@ -22,3 +22,7 @@ testPsqlConnectivity() {
 		exit 1
 	fi
 }
+
+listTables() {
+	psql -c "\l"
+}
