@@ -169,3 +169,26 @@ addInTable() {
 
 commands["add"]="Insert in a table a values for given columns"
 commandFactory["add"]="addInTable && echo"
+
+deleteFromTable() {
+	echo -n "From what table you wanna delete? "
+	read tableName
+
+	echo -n "Tell me the where constraint: "
+	read whereConstraint
+
+	local cmd="DELETE FROM $tableName WHERE $whereConstraint;"
+	echo $cmd
+
+	echo -n "Are you sure you wanna execute this delete? [y/N]"
+	read areYouSure
+
+	if [[ $areYouSure == "y" || $areYouSure == "Y" ]]; then
+		psql -c "$cmd"
+	fi
+}
+
+commands["delete"]="Delete something from a table given some where constraints"
+commandFactory["delete"]="deleteFromTable && echo"
+
+
