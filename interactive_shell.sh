@@ -32,25 +32,10 @@ while true; do
                 continue
         fi
 
-	if [[ $cmd == "list tables" ]]; then
-		listTables
-		continue
-	fi
-
-	if [[ $cmd == "list databases" ]]; then
-		listDatabases
-		continue
-	fi
-
-	if [[ $cmd == "drop table" ]]; then
-		dropTable
-		continue
-	fi
-
 	if [[ $cmd == "exit" || $cmd == "quit" ]]; then
 		exitMessage
 		break
 	fi
 
-	invalidCommandMessage
+	[ -v "commandFactory[$cmd]" ] && eval "${commandFactory[$cmd]}" || invalidCommandMessage
 done

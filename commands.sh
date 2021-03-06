@@ -1,18 +1,21 @@
 #!/bin/bash
 
 declare -A commands
+declare -A commandFactory
 
 listTables() {
         psql -c "\dt"
 }
 
 commands["list_tables"]="show all available tables"
+commandFactory["list tables"]="listTables"
 
 listDatabases() {
         psql -c "\l"
 }
 
 commands["list_databases"]="show all databases available"
+commandFactory["list databases"]="listDatabases"
 
 dropTable() {
         echo -n "What is the name of the table you want to delete? "
@@ -35,4 +38,4 @@ dropTable() {
 }
 
 commands["drop_table"]="deletes a table if it exists"
-
+commandFactory["drop table"]="dropTable"
