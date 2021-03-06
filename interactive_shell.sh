@@ -21,19 +21,19 @@ while true
 do
 	echo -n "Hello there, what do you wanna do? "
 
-	read command
+	read cmd
 
-	if [[ $command == "help" || $command == "h" ]]; then
+	if [[ $cmd == "help" || $cmd == "h" ]]; then
 		help
 		continue
 	fi
 
-	if [[ $command == "clear" ]]; then
+	if [[ $cmd == "clear" ]]; then
                 clear
                 continue
         fi
 
-	if [[ $command == "exit" || $command == "quit" ]]; then
+	if [[ $cmd == "exit" || $cmd == "quit" ]]; then
 		exit_message
 		break
 	fi
