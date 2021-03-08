@@ -1,4 +1,3 @@
-  GNU nano 4.8                                            src/shell_functions.sh                                                      
 #!/bin/bash
 
 checkEmptyCredentials() {
