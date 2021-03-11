@@ -16,10 +16,7 @@ while true; do
 	echo -n "Hello there, what do you wanna do? "
 	read cmd
 
-	if [[ -v "commandFactory[$cmd]" ]]; then
-		eval "${commandFactory[$cmd]}"
-		continue
-	fi
+	[ -v "commandFactory[$cmd]" ] && eval "${commandFactory[$cmd]}"; continue
 
 	invalidCommandMessage
 done
