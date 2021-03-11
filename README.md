@@ -23,4 +23,4 @@ You should have a shell compatible with bash commands and syntax and also you ma
 
 `DB_PORT` or `PG_PORT` = port in where the database is running
 
-`CODE_EDITOR` = code editor you want to use when writing raw queries (when not set it sets itself as nano by default)
+`CODE_EDITOR` = code editor you want to use when writing raw queries (when not set it sets itself as vim default)
