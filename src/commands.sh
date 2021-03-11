@@ -35,7 +35,7 @@ dropTable() {
         printf "Are you sure you wanna delete %s table? [y/N] " "$tableName"
         read shouldDelete
 
-	[ $shouldDelete == "y" ] || [ $shouldDelete == "Y" ] && psql -c "DROP TABLE $tableName;"
+	[ $shouldDelete = "y" ] || [ $shouldDelete = "Y" ] && psql -c "DROP TABLE $tableName;"
 
 }
 
@@ -60,7 +60,7 @@ createTable() {
 		echo -n "Are you done yet? [y/N] "
 		read isDone
 
-		[ $isDone == "y" ] || [ $isDone == "Y" ] && break
+		[ $isDone = "y" ] || [ $isDone = "Y" ] && break
 
 	done
 
@@ -76,7 +76,7 @@ createTable() {
 	echo -n "Would you like to run this command? "
 	read doExec
 
-	[ $doExec == "y" ] || [ $doExec == "Y" ] && psql -c "$cmd"
+	[ $doExec = "y" ] || [ $doExec = "Y" ] && psql -c "$cmd"
 }
 
 commands["create_table"]="creates a table if valid and does not exist yet"
@@ -100,7 +100,7 @@ selectFromTable() {
 	echo -n "Should use where constraint? [y/N] "
 	read useWhere
 
-	if [[ $useWhere == "y" || $useWhere == "Y" ]]; then
+	if [ $useWhere = "y" ] || [ $useWhere = "Y" ]; then
 	        echo -n "Tell me the where constraints: "
         	read whereConstraint
 	fi
@@ -109,11 +109,11 @@ selectFromTable() {
         read agree
 
 
-	if [[ $agree == "y" || $agree == "Y" ]]; then
+	if [ $agree = "y" ] || [ $agree = "Y" ]; then
 		echo -n "Tell me the columns separed by comma (,): "
 		read columnNames
 
-		if [[ $useWhere == "y" || $useWhere == "Y" ]]; then
+		if [ $useWhere = "y" ] || [ $useWhere = "Y" ]; then
 	                psql -c "SELECT $columnNames FROM $tableName WHERE $whereConstraint;"
 			return
 		fi
@@ -123,7 +123,7 @@ selectFromTable() {
 	fi
 
 
-	if [[ $useWhere == "y" || $useWhere == "Y" ]]; then
+	if [ $useWhere = "y" ] || [ $useWhere = "Y" ]; then
 		psql -c "SELECT * FROM $tableName WHERE $whereConstraint;"
 		return
 	fi
@@ -150,7 +150,7 @@ addInTable() {
 	echo -n "Are you sure you wanna add this? [y/N]"
 	read areYouSure
 
-	[ $areYouSure == "y" ] || [ $areYouSure == "Y" ] && psql -c "$cmd"
+	[ $areYouSure = "y" ] || [ $areYouSure = "Y" ] && psql -c "$cmd"
 }
 
 commands["add"]="Insert in a table a values for given columns"
@@ -169,7 +169,7 @@ deleteFromTable() {
 	echo -n "Are you sure you wanna execute this delete? [y/N]"
 	read areYouSure
 
-	[ $areYouSure == "y" ] || [ $areYouSure == "Y" ] && psql -c "$cmd"
+	[ $areYouSure = "y" ] || [ $areYouSure = "Y" ] && psql -c "$cmd"
 }
 
 commands["delete"]="Delete something from a table given some where constraints"
@@ -192,7 +192,7 @@ updateValue() {
 	echo -n "Are you sure you wanna update with this command? [y/N]"
 	read areYouSure
 
-	[ $areYouSure == "y" ] || [ $areYouSure == "Y" ] && psql -c "$cmd"
+	[ $areYouSure = "y" ] || [ $areYouSure = "Y" ] && psql -c "$cmd"
 }
 
 commands["update"]="Update values from a table given a where contraint"
@@ -206,13 +206,13 @@ rawQuery() {
 	echo -n "Do you wanna execute the query written? [y/N]"
 	read areYouSure
 
-	if [[ $areYouSure == "y" || $areYouSury == "Y" ]]; then
+	if [ $areYouSure = "y" ] || [ $areYouSury = "Y" ]; then
 		psql -f $TMP_FILENAME
 
 		echo -n "Do you wanna save your sql script? [y/N]"
 		read wantSave
 
-		if [[ $wantSave == "y" || $wantSave == "Y" ]]; then 
+		if [ $wantSave = "y" ] || [ $wantSave = "Y" ]; then 
 			echo -n "What name you wanna call your script? "
 			read scriptName
 
