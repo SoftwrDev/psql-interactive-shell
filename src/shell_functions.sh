@@ -32,7 +32,7 @@ prepareEnv() {
 testPsqlConnectivity() {
         psql -c "\l" > /dev/null 2>&1
 
-        if [[ $? -ne 0 ]]; then
+        if [ $? -ne 0 ]; then
                 printf "Unable to connect to database. Check if the database is really available\n\n"
                 exit 1
         fi
