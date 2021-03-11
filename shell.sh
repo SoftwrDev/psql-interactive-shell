@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 source ./src/messages.sh
 source ./src/shell_functions.sh
