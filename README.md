@@ -1,6 +1,6 @@
 # PSQL Interactive Shell
 
-This is an attempt to create an easy shellscript to be used as an api to interact with postgresql through bash terminal.
+This is an attempt to create an easy shellscript to be used as an api to interact with postgresql through terminal.
 
 For simple stuff you can create and drop tables. Do some basic queries (SELECT, INSERT, DELETE and UPDATE) query with one table. 
 
@@ -9,7 +9,7 @@ If you want to write some more advanced query you should try `raw query` command
 If for some reason you get stuck, you can always type `help` or `h` to get help with the commands.
 
 ## Requirements
-You should have a shell compatible with bash commands and syntax and also you may need to set some variables to get the script to work:
+You should have a shell, psql installed and may also need to set some environment variables such as:
 
 ### Environment variables
 
