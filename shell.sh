@@ -4,7 +4,7 @@ source ./src/messages.sh
 source ./src/shell_functions.sh
 source ./src/commands.sh
 
-checkEmptyCredentials && echeckEmptyDatabaseProvided && prepareEnv && testPsqlConnectivity
+checkEmptyCredentials && checkEmptyDatabaseProvided && prepareEnv && testPsqlConnectivity
 
 clear
 
