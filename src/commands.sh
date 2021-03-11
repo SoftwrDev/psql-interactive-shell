@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 declare -A commands
 declare -A commandFactory
@@ -35,9 +35,7 @@ dropTable() {
         printf "Are you sure you wanna delete %s table? [y/N] " "$tableName"
         read shouldDelete
 
-        if [[ $shouldDelete == "y" || $shouldDelete == "Y" ]]; then
-                psql -c "DROP TABLE $tableName;"
-        fi
+	[ $shouldDelete == "y" ] || [ $shouldDelete == "Y" ] && psql -c "DROP TABLE $tableName;"
 
 }
 
@@ -50,7 +48,7 @@ createTable() {
 
 	declare -A arguments
 
-	while true; do
+	while : ; do
 
 		echo -n "What is the name of the next column? "
 		read columnName
@@ -62,9 +60,8 @@ createTable() {
 		echo -n "Are you done yet? [y/N] "
 		read isDone
 
-		if [[ $isDone == "y" || $isDone == "Y" ]]; then
-			break
-		fi
+		[ $isDone == "y" ] || [ $isDone == "Y" ] && break
+
 	done
 
 	out=""
@@ -79,9 +76,7 @@ createTable() {
 	echo -n "Would you like to run this command? "
 	read doExec
 
-	if [[ $doExec == "y" || $doExec == "Y" ]]; then
-		psql -c "$cmd"
-	fi
+	[ $doExec == "y" ] || [ $doExec == "Y" ] && psql -c "$cmd"
 }
 
 commands["create_table"]="creates a table if valid and does not exist yet"
@@ -155,9 +150,7 @@ addInTable() {
 	echo -n "Are you sure you wanna add this? [y/N]"
 	read areYouSure
 
-	if [[ $areYouSure == "y" || $areYouSure == "Y" ]]; then
-		psql -c "$cmd"
-	fi
+	[ $areYouSure == "y" ] || [ $areYouSure == "Y" ] && psql -c "$cmd"
 }
 
 commands["add"]="Insert in a table a values for given columns"
@@ -176,9 +169,7 @@ deleteFromTable() {
 	echo -n "Are you sure you wanna execute this delete? [y/N]"
 	read areYouSure
 
-	if [[ $areYouSure == "y" || $areYouSure == "Y" ]]; then
-		psql -c "$cmd"
-	fi
+	[ $areYouSure == "y" ] || [ $areYouSure == "Y" ] && psql -c "$cmd"
 }
 
 commands["delete"]="Delete something from a table given some where constraints"
@@ -201,9 +192,7 @@ updateValue() {
 	echo -n "Are you sure you wanna update with this command? [y/N]"
 	read areYouSure
 
-	if [[ $areYouSure == "y" || $areYouSure == "Y" ]]; then
-		psql -c "$cmd"
-	fi
+	[ $areYouSure == "y" ] || [ $areYouSure == "Y" ] && psql -c "$cmd"
 }
 
 commands["update"]="Update values from a table given a where contraint"
