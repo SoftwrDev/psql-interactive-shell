@@ -1,47 +1,31 @@
-#!/bin/bash
+#!/bin/sh
 
 checkEmptyCredentials() {
-        if [[ ${#LOGIN} -eq 0 && ${#PGUSER} -eq 0 || ${#PASSWORD} -eq 0 && ${#PGPASSWORD} -eq 0 ]]; then
+        if [ ${#LOGIN} -eq 0 && ${#PGUSER} -eq 0 || ${#PASSWORD} -eq 0 && ${#PGPASSWORD} -eq 0 ]; then
                 echo "Invalid credentials"
                 exit 1
         fi
 }
 
 checkEmptyDatabaseProvided() {
-        if [[ ${#DBNAME} -eq 0 && ${#PGDATABASE} -eq 0 ]]; then
+        if [ ${#DBNAME} -eq 0 && ${#PGDATABASE} -eq 0 ]; then
                 echo "Database name not provided"
                 exit 1
         fi
 }
 
 prepareEnv() {
-        if [[ ${#PGUSER} -eq 0 ]]; then
-                export PGUSER=$LOGIN
-        fi
+        [ ${#PGUSER} -eq 0 ] && export PGUSER=$LOGIN
 
-        if [[ ${#PGDATABASE} -eq 0 ]]; then
-                export PGDATABASE=$DBNAME
-        fi
+	[ ${#PGDATABASE} -eq 0 ] && export PGDATABASE=$DBNAME
 
-        if [[ ${#PGPASSWORD} -eq 0 ]]; then
-                export PGPASSWORD=$PASSWORD
-        fi
+     	[ ${#PGPASSWORD} -eq 0 ] && export PGPASSWORD=$PASSWORD
 
-        if [[ ${#DB_HOST} -eq 0 && ${#PGHOST} -eq 0 ]]; then
-                export PGHOST=127.0.0.1
-        else
-                export PGHOST=$DB_HOST
-        fi
+       	[ ${#DB_HOST} -eq 0 && ${#PGHOST} -eq 0 ] && export PGHOST=127.0.0.1 || export PGHOST=$DB_HOST
 
-        if [[ ${#DB_PORT} -eq 0 && ${#PGPORT} -eq 0 ]]; then
-                export PGPORT=5432
-        else
-                export PGPORT=$DB_PORT
-        fi
+       	[ ${#DB_PORT} -eq 0 && ${#PGPORT} -eq 0 ] && export PGPORT=5432 || export PGPORT=$DB_PORT
 
-        if [[ ${#CODE_EDITOR} -eq 0 ]]; then
-                export CODE_EDITOR="nano"
-        fi
+      	[ ${#CODE_EDITOR} -eq 0 ] && export CODE_EDITOR="vim"
 }
 
 
